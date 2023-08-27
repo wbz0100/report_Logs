@@ -34,6 +34,8 @@ const HuntData = {
   "8900":{"Grade":"S"},
   "8905":{"Grade":"S"},
   "8910":{"Grade":"S"},
+  "8915":{"Grade":"SS"},
+  "10615":{"Grade":"SS"},
   "10617":{"Grade":"S"},
   "10618":{"Grade":"S"},
   "10619":{"Grade":"S"},
