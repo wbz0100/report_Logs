@@ -63,7 +63,7 @@ function catchLogs(data) {
     savedLog03 = sendLog03
     document.querySelector("#reportLog_status").textContent = '기록 시작'
     SendLogToSheet()
-    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}] ${savedName03}(${currMobId})`
+    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}] ${savedName03}(${savedmobId})`
     console.log(`기록 완료: [${currWorld}] ${savedName03}`)
   }
 }
