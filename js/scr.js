@@ -1,4 +1,4 @@
-const overlayVersion = "1.0.0",
+const overlayVersion = "1.0.1",
 worldDATA = JSON.parse(JSON.stringify(WorldData)),
 huntLIST = JSON.parse(JSON.stringify(HuntData))
 
@@ -61,9 +61,9 @@ function catchLogs(data) {
     mobName = logLine[logLine.indexOf('Name') + 1]
     savedLog261 = sendLog261
     savedLog03 = sendLog03
-    document.querySelector("#reportLog_List").textContent = '기록 시작'
+    document.querySelector("#reportLog_status").textContent = '기록 시작'
     SendLogToSheet()
-    document.querySelector("#reportLog_List").textContent = `기록 완료: [${currWorld}] ${mobName}`
+    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}] ${mobName}`
   }
 }
 
@@ -77,7 +77,7 @@ addOverlayListener('LogLine', catchLogs)
 startOverlayEvents()
 
 function SendLogToSheet() {
-  document.querySelector("#reportLog_List").textContent = '기록중...'
+  document.querySelector("#reportLog_status").textContent = '기록중...'
   $.ajax({
     type: "GET",
     url: "https://script.google.com/macros/s/AKfycbz0SWpNJ27M-RMHUihT3BrsxuZSFYbT5U6q54dPOI3l90CITDCqgfBcCt6NEJN1a1sGLA/exec",
