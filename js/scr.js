@@ -36,7 +36,7 @@ function catchLogs(data) {
     case '03':
       addTime03 = new Date()
       if(logLine[9] in huntLIST && (addTime03 - inZoneTime) > 200) {
-        savedName = logLine[3]
+        savedName03 = logLine[3]
         sendLog03 = rawLine
       }
     break
@@ -58,13 +58,13 @@ function catchLogs(data) {
     break
   }
   if(sendLog261 !== 0 && sendLog03 !== 0 && savedLog261 !== sendLog261 && savedLog03 !== sendLog03) {
-    mobName = logLine[logLine.indexOf('Name') + 1]
+    savedName261 = logLine[logLine.indexOf('Name') + 1]
     savedLog261 = sendLog261
     savedLog03 = sendLog03
     document.querySelector("#reportLog_status").textContent = '기록 시작'
     SendLogToSheet()
-    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}] ${mobName}`
-    cosole.log(`기록 완료: [${currWorld}] ${mobName}`)
+    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}] ${savedName03}`
+    cosole.log(`기록 완료: [${currWorld}] ${savedName03}`)
   }
 }
 
@@ -84,7 +84,7 @@ function SendLogToSheet() {
     url: "https://script.google.com/macros/s/AKfycbz0SWpNJ27M-RMHUihT3BrsxuZSFYbT5U6q54dPOI3l90CITDCqgfBcCt6NEJN1a1sGLA/exec",
     data: {
       "No.":            null,
-      "Name":           mobName,
+      "Name":           savedName03,
       "ID":             null,
       "D":              null,
       "UserName":       `${myName}(ACT)`,
