@@ -1,4 +1,4 @@
-const overlayVersion = "1.0.2",
+const overlayVersion = "1.0.3",
 worldDATA = JSON.parse(JSON.stringify(WorldData)),
 huntLIST = JSON.parse(JSON.stringify(HuntData))
 
@@ -12,8 +12,10 @@ currWorld = null,
 inZoneTime = null,
 addTime03 = null,
 addTime261 = null,
-currMobId = null,
-savedmobId = null,
+currMobId03 = null,
+savedMobId03 = null,
+currMobId261 = null,
+savedMobId261 = null,
 sendLog261 = null,
 sendLog03 = null,
 savedLog261 = null,
@@ -36,9 +38,12 @@ function catchLogs(data) {
     break
     case '03':
       addTime03 = new Date()
-      if(logLine[9] in huntLIST && (addTime03 - inZoneTime) > 200) {
+      currMobId03 = logLine[2]
+      if(logLine[9] in huntLIST && addTime03 - inZoneTime > 200 && currMobId03 !== savedMobId03) {
+        savedMobId03 = currMobId03
         savedName03 = logLine[3]
         sendLog03 = rawLine
+        console.log(`saved 03: ${savedName03} ${sendLog03}`)
       }
     break
     case '261':
@@ -48,24 +53,25 @@ function catchLogs(data) {
           myDataCombatant(logLine)
         }
         else{
-          currMobId = logLine[3]
+          currMobId261 = logLine[3]
           bNpcNameId = parseInt(logLine[logLine.indexOf('BNpcNameID') + 1], 16)
-          if(!(bNpcNameId == undefined || !bNpcNameId) && (bNpcNameId in huntLIST) && savedmobId !== currMobId && ((addTime261 - inZoneTime) > 200)) {
-            savedmobId = currMobId
+          if(bNpcNameId in huntLIST && addTime261 - inZoneTime > 200 && currMobId261 !== savedMobId261) {
+            savedMobId261 = currMobId261
             sendLog261 = rawLine
+            console.log(`saved 261: ${savedMobId261} ${sendLog261}`)
           }
         }
       }
     break
   }
-  if(sendLog261 !== 0 && sendLog03 !== 0 && savedLog261 !== sendLog261 && savedLog03 !== sendLog03) {
+  if(savedLog261 !== sendLog261 && savedLog03 !== sendLog03) {
     reportTime = dateFormat(new Date())
     savedName261 = logLine[logLine.indexOf('Name') + 1]
     savedLog261 = sendLog261
     savedLog03 = sendLog03
     SendLogToSheet()
     document.querySelector("#reportlog_time").textContent = `[${reportTime}]`
-    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}]${savedName03}(${savedmobId})`
+    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}] ${savedName03}(${savedMobId261})`
     console.log(`기록 완료: [${currWorld}] ${savedName03}`)
   }
 }
