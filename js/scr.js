@@ -47,7 +47,7 @@ function catchLogs(data) {
           myDataCombatant(logLine)
         }
         else{
-          currMobId = logLine[4]
+          currMobId = logLine[3]
           bNpcNameId = parseInt(logLine[logLine.indexOf('BNpcNameID') + 1], 16)
           if(!(bNpcNameId == undefined || !bNpcNameId) && (bNpcNameId in huntLIST) && savedmobId !== currMobId && ((addTime261 - inZoneTime) > 200)) {
             savedmobId = currMobId
