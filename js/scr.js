@@ -1,8 +1,9 @@
-const overlayVersion = "1.1.0",
+const overlayVersion = "1.0.2",
 worldDATA = JSON.parse(JSON.stringify(WorldData)),
 huntLIST = JSON.parse(JSON.stringify(HuntData))
 
 document.querySelector("#input_verNum").textContent = overlayVersion
+
 
 let myName = null,
 myId = null,
@@ -63,7 +64,8 @@ function catchLogs(data) {
     savedLog261 = sendLog261
     savedLog03 = sendLog03
     SendLogToSheet()
-    document.querySelector("#reportLog_status").textContent = `[${reportTime}]기록 완료: [${currWorld}] ${savedName03}(${savedmobId})`
+    document.querySelector("#reportlog_time").textContent = `[${reportTime}]`
+    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}] ${savedName03}(${savedmobId})`
     console.log(`기록 완료: [${currWorld}] ${savedName03}`)
   }
 }
