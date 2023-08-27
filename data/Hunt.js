@@ -1,4 +1,5 @@
 const HuntData = {
+  "2928":{"Grade":"B"},
   "2953":{"Grade":"S"},
   "2954":{"Grade":"S"},
   "2955":{"Grade":"S"},
