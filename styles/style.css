@@ -1,7 +1,7 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) { /* IE10+ CSS */ }
 :root {
-  color: #fff;
+  color: #eeeeee;
   font-family: Pretendard, sans-serif;
   -ms-overflow-style: none;
   background-color: rgba(0, 0, 0, 0.7);
@@ -11,10 +11,6 @@
   display: none;
 }
 
-.title {
-  font-size: 14px;
-  margin: 0 0 4px 0;
-}
 body > div {
   display: flex;
   font-size: 12px;
@@ -23,4 +19,9 @@ body > div {
 .report {
   margin: 8px 0 0 0;
   color: #5ccbff
+}
+
+.Version {
+  margin: 2px 0 0 0;
+  color: #aaaaaa
 }

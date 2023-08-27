@@ -1,6 +1,9 @@
 const worldDATA = JSON.parse(JSON.stringify(WorldData))
 const huntLIST = JSON.parse(JSON.stringify(HuntData))
 
+const nowVersion = '1.0.0'
+document.querySelector("#input_verNum").textContent = nowVersion
+
 let myName = null,
 myId = null,
 currZone = null,
