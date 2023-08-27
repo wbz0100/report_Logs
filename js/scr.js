@@ -64,6 +64,7 @@ function catchLogs(data) {
     document.querySelector("#reportLog_status").textContent = '기록 시작'
     SendLogToSheet()
     document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}] ${mobName}`
+    cosole.log(`기록 완료: [${currWorld}] ${mobName}`)
   }
 }
 
