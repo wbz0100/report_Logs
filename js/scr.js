@@ -1,4 +1,4 @@
-const overlayVersion = "1.0.2",
+const overlayVersion = "1.1.0",
 worldDATA = JSON.parse(JSON.stringify(WorldData)),
 huntLIST = JSON.parse(JSON.stringify(HuntData))
 
@@ -58,12 +58,12 @@ function catchLogs(data) {
     break
   }
   if(sendLog261 !== 0 && sendLog03 !== 0 && savedLog261 !== sendLog261 && savedLog03 !== sendLog03) {
+    reportTime = dateFormat(new Date())
     savedName261 = logLine[logLine.indexOf('Name') + 1]
     savedLog261 = sendLog261
     savedLog03 = sendLog03
-    document.querySelector("#reportLog_status").textContent = '기록 시작'
     SendLogToSheet()
-    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}] ${savedName03}(${savedmobId})`
+    document.querySelector("#reportLog_status").textContent = `[${reportTime}]기록 완료: [${currWorld}] ${savedName03}(${savedmobId})`
     console.log(`기록 완료: [${currWorld}] ${savedName03}`)
   }
 }
@@ -74,11 +74,21 @@ function myDataCombatant(log) {
   currWorld = !(worldName == 0 || worldName == undefined || !worldName) ? worldDATA[currWorldID]["UserType"] : ''
   document.querySelector("#input_currWorld").textContent = currWorld
 }
+
 addOverlayListener('LogLine', catchLogs)
 startOverlayEvents()
 
+function dateFormat(date) {
+  let hour = date.getHours();
+  let minute = date.getMinutes();
+
+  hour = hour >= 10 ? hour : '0' + hour;
+  minute = minute >= 10 ? minute : '0' + minute;
+
+  return hour + ':' + minute
+}
+
 function SendLogToSheet() {
-  document.querySelector("#reportLog_status").textContent = '기록중...'
   $.ajax({
     type: "GET",
     url: "https://script.google.com/macros/s/AKfycbz0SWpNJ27M-RMHUihT3BrsxuZSFYbT5U6q54dPOI3l90CITDCqgfBcCt6NEJN1a1sGLA/exec",
