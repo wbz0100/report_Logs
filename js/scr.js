@@ -39,8 +39,6 @@ function catchLogs(data) {
       addTime03 = new Date()
       currMobId03 = logLine[2]
       if(logLine[9] in huntLIST && addTime03 - inZoneTime > 200 && currMobId03 !== savedMobId03 && inZoneTime !== null) {
-        console.warn(`03: ${addTime03}, ${inZoneTime}, ${addTime03 - inZoneTime}`)
-        console.warn(rawLine)
         savedMobId03 = currMobId03
         savedName03 = logLine[3]
         sendLog03 = rawLine
