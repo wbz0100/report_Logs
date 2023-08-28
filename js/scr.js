@@ -1,4 +1,4 @@
-const overlayVersion = "1.0.6",
+const overlayVersion = "1.0.7",
 worldDATA = JSON.parse(JSON.stringify(WorldData)),
 huntLIST = JSON.parse(JSON.stringify(HuntData))
 
@@ -55,7 +55,7 @@ function catchLogs(data) {
           addTime261 = new Date()
           currMobId261 = logLine[3]
           bNpcNameId = parseInt(logLine[logLine.indexOf('BNpcNameID') + 1], 16)
-          if(bNpcNameId in huntLIST && currMobId261 !== savedMobId261 && inZoneTime261 !== null) {
+          if(bNpcNameId in huntLIST && currMobId261 !== savedMobId261) {
             savedMobId261 = currMobId261
             sendLog261 = rawLine
           }
@@ -63,7 +63,7 @@ function catchLogs(data) {
       }
     break
   }
-  if(savedLog261 !== sendLog261 && savedLog03 !== sendLog03 && savedMobId03 == savedMobId261) {
+  if(savedLog261 !== sendLog261 && savedLog03 !== sendLog03 && savedMobId03 == savedMobId261 && addTime03 - inZoneTime > 200) {
     reportTime = dateFormat(new Date())
     savedName261 = logLine[logLine.indexOf('Name') + 1]
     savedLog261 = sendLog261
