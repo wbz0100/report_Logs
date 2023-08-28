@@ -74,8 +74,8 @@ function catchLogs(data) {
     sizeFactor = huntLIST[savedNameId].MSF
     calcPos = xivMapCoord(mobX, mobY, mobZ)
     
-    document.querySelector("#reportlog_time").textContent = `[${reportTime}]`
-    document.querySelector("#reportLog_status").textContent = `기록 완료 - [${currWorld}]${savedName03}(X:${calcPos[0]} , Y:${calcPos[1]})`
+    document.querySelector("#reportlog_time").textContent = `[${reportTime}] `
+    document.querySelector("#reportLog_status").textContent = `기록 완료 - [${currWorld}]${savedName03} (X: ${calcPos[0]} , Y: ${calcPos[1]})`
     console.log(`기록 완료: [${currWorld}] ${savedName03}`)
   }
 }
