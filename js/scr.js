@@ -1,4 +1,4 @@
-const overlayVersion = "1.0.5",
+const overlayVersion = "1.0.6",
 worldDATA = JSON.parse(JSON.stringify(WorldData)),
 huntLIST = JSON.parse(JSON.stringify(HuntData))
 
@@ -39,22 +39,24 @@ function catchLogs(data) {
     case '03':
       addTime03 = new Date()
       currMobId03 = logLine[2]
-      if(logLine[9] in huntLIST && addTime03 - inZoneTime > 200 && currMobId03 !== savedMobId03) {
+      if(logLine[9] in huntLIST && addTime03 - inZoneTime > 200 && currMobId03 !== savedMobId03 && inZoneTime !== null) {
+        console.warn(`03: ${addTime03}, ${inZoneTime}, ${addTime03 - inZoneTime}`)
+        console.warn(rawLine)
         savedMobId03 = currMobId03
         savedName03 = logLine[3]
         sendLog03 = rawLine
       }
     break
     case '261':
-      addTime261 = new Date()
       if(logLine[2] === 'Add') {
         if (logLine[3] == myId) {
           myDataCombatant(logLine)
         }
         else{
+          addTime261 = new Date()
           currMobId261 = logLine[3]
           bNpcNameId = parseInt(logLine[logLine.indexOf('BNpcNameID') + 1], 16)
-          if(bNpcNameId in huntLIST && addTime261 - inZoneTime > 200 && currMobId261 !== savedMobId261) {
+          if(bNpcNameId in huntLIST && currMobId261 !== savedMobId261 && inZoneTime261 !== null) {
             savedMobId261 = currMobId261
             sendLog261 = rawLine
           }
@@ -62,7 +64,7 @@ function catchLogs(data) {
       }
     break
   }
-  if(savedLog261 !== sendLog261 && savedLog03 !== sendLog03) {
+  if(savedLog261 !== sendLog261 && savedLog03 !== sendLog03 && savedMobId03 == savedMobId261) {
     reportTime = dateFormat(new Date())
     savedName261 = logLine[logLine.indexOf('Name') + 1]
     savedLog261 = sendLog261
