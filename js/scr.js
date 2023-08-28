@@ -1,4 +1,4 @@
-const overlayVersion = "1.0.9",
+const overlayVersion = "1.1.0",
 worldDATA = JSON.parse(JSON.stringify(WorldData)),
 huntLIST = JSON.parse(JSON.stringify(HuntData))
 
