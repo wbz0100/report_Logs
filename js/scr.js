@@ -38,9 +38,10 @@ function catchLogs(data) {
     case '03':
       addTime03 = new Date()
       currMobId03 = logLine[2]
-      if(logLine[9] in huntLIST && addTime03 - inZoneTime > 200 && currMobId03 !== savedMobId03 && inZoneTime !== null) {
+      if(logLine[9] in huntLIST && currMobId03 !== savedMobId03 && inZoneTime !== null) {
         savedMobId03 = currMobId03
         savedName03 = logLine[3]
+        savedNameId = logLine[9]
         sendLog03 = rawLine
       }
     break
@@ -50,10 +51,12 @@ function catchLogs(data) {
           myDataCombatant(logLine)
         }
         else{
-          addTime261 = new Date()
           currMobId261 = logLine[3]
           bNpcNameId = parseInt(logLine[logLine.indexOf('BNpcNameID') + 1], 16)
           if(bNpcNameId in huntLIST && currMobId261 !== savedMobId261) {
+            mobX = logLine[logLine.indexOf('PosX') + 1]
+            mobY = logLine[logLine.indexOf('PosY') + 1]
+            mobZ = logLine[logLine.indexOf('PosZ') + 1]
             savedMobId261 = currMobId261
             sendLog261 = rawLine
           }
@@ -67,8 +70,12 @@ function catchLogs(data) {
     savedLog261 = sendLog261
     savedLog03 = sendLog03
     SendLogToSheet()
+
+    sizeFactor = huntLIST[savedNameId].MSF
+    calcPos = xivMapCoord(mobX, mobY, mobZ)
+    
     document.querySelector("#reportlog_time").textContent = `[${reportTime}]`
-    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}]${savedName03}(${savedMobId261})`
+    document.querySelector("#reportLog_status").textContent = `기록 완료 - [${currWorld}]${savedName03}(X:${calcPos[0]} , Y:${calcPos[1]})`
     console.log(`기록 완료: [${currWorld}] ${savedName03}`)
   }
 }
@@ -108,4 +115,12 @@ function SendLogToSheet() {
       "Zone/Server":   `${currZone}/${currWorld}`
     }
   })
+}
+
+function xivMapCoord (x,y,z) {
+  posX = Math.floor(((0.02 * x) + (2048 / sizeFactor) + 1) * 100) / 100
+  posY = Math.floor(((0.02 * y) + (2048 / sizeFactor) + 1) * 100) / 100
+  posZ = Math.floor(((z / 2 + 0.5) / 50) * 100) / 100
+
+  return [posX, posY, posZ]
 }
