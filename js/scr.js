@@ -4,7 +4,6 @@ huntLIST = JSON.parse(JSON.stringify(HuntData))
 
 document.querySelector("#input_verNum").textContent = overlayVersion
 
-
 let myName = null,
 myId = null,
 currZone = null,
