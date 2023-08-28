@@ -1,4 +1,4 @@
-const overlayVersion = "1.0.4",
+const overlayVersion = "1.0.5",
 worldDATA = JSON.parse(JSON.stringify(WorldData)),
 huntLIST = JSON.parse(JSON.stringify(HuntData))
 
@@ -39,7 +39,7 @@ function catchLogs(data) {
     case '03':
       addTime03 = new Date()
       currMobId03 = logLine[2]
-      if(logLine[9] in huntLIST && currMobId03 !== savedMobId03) {
+      if(logLine[9] in huntLIST && addTime03 - inZoneTime > 200 && currMobId03 !== savedMobId03) {
         savedMobId03 = currMobId03
         savedName03 = logLine[3]
         sendLog03 = rawLine
@@ -52,7 +52,6 @@ function catchLogs(data) {
           myDataCombatant(logLine)
         }
         else{
-          addTime261 = new Date()
           currMobId261 = logLine[3]
           bNpcNameId = parseInt(logLine[logLine.indexOf('BNpcNameID') + 1], 16)
           if(bNpcNameId in huntLIST && addTime261 - inZoneTime > 200 && currMobId261 !== savedMobId261) {
@@ -70,8 +69,8 @@ function catchLogs(data) {
     savedLog03 = sendLog03
     SendLogToSheet()
     document.querySelector("#reportlog_time").textContent = `[${reportTime}]`
-    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}] ${savedName03}(${savedMobId261})`
-    console.log (`기록 완료: [${currWorld}] ${savedName03}`)
+    document.querySelector("#reportLog_status").textContent = `기록 완료: [${currWorld}]${savedName03}(${savedMobId261})`
+    console.log(`기록 완료: [${currWorld}] ${savedName03}`)
   }
 }
 
