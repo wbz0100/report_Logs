@@ -38,7 +38,7 @@ function catchLogs(data) {
     case '03':
       addTime03 = new Date()
       currMobId03 = logLine[2]
-      if(logLine[9] in huntLIST && currMobId03 !== savedMobId03 && inZoneTime !== null) {
+      if(logLine[9] in huntLIST && currMobId03 !== savedMobId03 && inZoneTime !== null && addTime03 - inZoneTime > 200) {
         savedMobId03 = currMobId03
         savedName03 = logLine[3]
         savedNameId = logLine[9]
