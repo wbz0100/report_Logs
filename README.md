@@ -1,4 +1,4 @@
-# Report logs 오버레이
+# Report Logs 오버레이
 자동으로 시트에 마물 등장 로그(type 261/03)를 입력해주는 오버레이 입니다.  ([기록용 시트](https://docs.google.com/spreadsheets/d/1jtRimkaHAzJ8h5O2Z8Y3RD0dwYQ3q6Xrvv6kGWUxLYY))  
   
 사용 방법  
