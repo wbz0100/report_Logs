@@ -1,4 +1,4 @@
-const overlayVersion = "1.0.11",
+const overlayVersion = "1.0.12",
 worldDATA = JSON.parse(JSON.stringify(WorldData)),
 huntLIST = JSON.parse(JSON.stringify(HuntData))
 
@@ -38,7 +38,7 @@ function catchLogs(data) {
     case '03':
       addTime03 = new Date()
       currMobId03 = logLine[2]
-      if(logLine[9] in huntLIST && currMobId03 !== savedMobId03 && inZoneTime !== null && addTime03 - inZoneTime > 200) {
+      if(logLine[9] in huntLIST && currMobId03 !== savedMobId03 && inZoneTime !== null && addTime03 - inZoneTime > 300) {
         savedMobId03 = currMobId03
         savedName03 = logLine[3]
         savedNameId = logLine[9]
@@ -64,7 +64,7 @@ function catchLogs(data) {
       }
     break
   }
-  if(savedLog261 !== sendLog261 && savedLog03 !== sendLog03 && savedMobId03 == savedMobId261 && addTime03 - inZoneTime > 200) {
+  if(savedLog261 !== sendLog261 && savedLog03 !== sendLog03 && savedMobId03 == savedMobId261 && addTime03 - inZoneTime > 300) {
     reportTime = dateFormat(new Date())
     savedName261 = logLine[logLine.indexOf('Name') + 1]
     savedLog261 = sendLog261
@@ -75,7 +75,7 @@ function catchLogs(data) {
     calcPos = xivMapCoord(mobX, mobY, mobZ)
     
     document.querySelector("#reportlog_time").textContent = `[${reportTime}] `
-    document.querySelector("#reportLog_status").textContent = `기록 완료 - [${currWorld}]${savedName03} (X:${calcPos[0]}, Y:${calcPos[1]}) ✓`
+    document.querySelector("#reportLog_status").textContent = ` 기록 완료 - [${currWorld}]${savedName03} (X:${calcPos[0]}, Y:${calcPos[1]}) ✓`
     console.log(`기록 완료: [${currWorld}] ${savedName03}`)
   }
 }
