@@ -1,7 +1,7 @@
 # Report Logs 오버레이
 
-**[Advanced Combatant Tracker](https://ffxivhaeru.tistory.com/notice/21)**[^1] (혹은 ACT/미터기/계산기라 칭하는 것)와 **CACTBOT**[^2]이 설치 되어있는 분들이 사용 가능한 오버레이 입니다!
-CACTBOT을 사용하지 않고 ACT 만 이용하실 경우, 하단 시트에 03로그를 수기로 입력하셔야 합니다. (상세 설명은 시트에 적혀있어요!)  
+**[Advanced Combatant Tracker](https://ffxivhaeru.tistory.com/notice/21)**[^1] (혹은 ACT/미터기/계산기라 칭하는 것)와 오버레이 플러그인**[^2]이 설치 되어있는 분들이 사용 가능한 오버레이 입니다!
+Overlay Plugin을 사용하지 않고 ACT 만 이용하실 경우, 하단 시트에 03로그를 수기로 입력하셔야 합니다. (상세 설명은 시트에 적혀있어요!)  
 
 자동으로 시트에 마물 등장 로그(type 261/03)를 입력해주는 오버레이 입니다.  ([기록용 시트](https://docs.google.com/spreadsheets/d/1jtRimkaHAzJ8h5O2Z8Y3RD0dwYQ3q6Xrvv6kGWUxLYY))  
 
@@ -38,4 +38,4 @@ p.s 기능은 오로지 로그 필터링 & 전송 뿐이라 성능에 큰 영향
 A footnote can also have multiple lines.
 
 [^1]: ACT 혹은 미터기, 계산기 등 모두 동일한 대상입니다.
-[^2]: HAERUBOT에서 설치 가능한 CACTBOT 플러그인입니다. 마물 레이더, 보스 타임라인 등, 여러가지 기능을 지원합니다.
+[^2]: 브라우저를 오버레이로 띄울 수 있게 해주는 플러그인입니다.
